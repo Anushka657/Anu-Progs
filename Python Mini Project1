@@ -1,0 +1,39 @@
+# To enter candidate details
+def enter_candidate_details():
+    name = input("Enter candidate's name: ")
+    age = int(input("Enter candidate's age: "))
+    experience = int(input("Enter candidate's years of experience: "))
+    qualification = input("Enter candidate's highest qualification: ")
+    return {"name": name, "age": age, "experience": experience, "qualification": qualification}
+
+# To shortlist candidates based on criteria
+def shortlist_candidates(candidates):
+    print("\nShortlisting candidates based on experience >= 3 years...")
+    shortlisted = []
+    for candidate in candidates:
+        if candidate["experience"] >= 4:  # Criteria: Minimum 3 years of experience
+            shortlisted.append(candidate)
+    
+    if shortlisted:
+        print("\nShortlisted Candidates:")
+        for candidate in shortlisted:
+            print(f"Name: {candidate['name']}, Age: {candidate['age']}, Experience: {candidate['experience']} years, Qualification: {candidate['qualification']}")
+    else:
+        print("No candidates meet the criteria.")
+
+# Main program
+def main():
+    candidates = []
+    num_candidates = int(input("Enter the number of candidates to input: "))
+    
+    # Collect details
+    for _ in range(num_candidates):
+        candidate = enter_candidate_details()
+        candidates.append(candidate)
+    
+    # Shortlist candidates based on criteria
+    shortlist_candidates(candidates)
+
+# Run the main function
+if __name__ == "__main__":
+    main()
